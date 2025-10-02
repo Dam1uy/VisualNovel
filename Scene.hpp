@@ -1,0 +1,28 @@
+#pragma once
+#include <string>
+#include <vector>
+#include "Dialog.hpp"
+
+struct Scene {
+    int sceneId;                  
+    std::string name;             
+    std::string description;      
+    std::string backgroundImage;  
+    std::string musicTrack;       
+    bool isLocked;                
+
+    std::vector<int> nextSceneIds; 
+    std::vector<Dialog> dialogs;   
+
+    
+    void ShowScene() const {
+        std::cout << "Scena: " << name << "\n";
+        std::cout << description << "\n";
+        for (const auto& d : dialogs) {
+            std::cout << d.speaker << ": " << d.text << "\n";
+            for (const auto& ch : d.choices) {
+                std::cout << "  " << ch.id << ". " << ch.text << "\n";
+            }
+        }
+    }
+};

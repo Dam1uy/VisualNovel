@@ -1,28 +1,56 @@
-#pragma once
+﻿#pragma once
 #include <string>
+#include <iostream>
 
 struct Character {
     std::string name;
     std::string role;
     std::string description;
-    std::string emotion;
-    int relationshipLevel;
+    int emotionLevel;       // 0 - 100
+    int relationshipLevel;  // 0 - 100
     bool isActive;
+
+    // Constructor
+    Character(const std::string& n, const std::string& r, const std::string& d)
+        : name(n), role(r), description(d),
+        emotionLevel(50), relationshipLevel(0),
+        isActive(true) {
+    }
+
+    void Print() const {
+        std::cout << "Nume: " << name
+            << " | Emoție: " << emotionLevel << "/100"
+            << " | Relație: " << relationshipLevel << "/100"
+            << " | Activ: " << (isActive ? "da" : "nu")
+            << std::endl;
+    }
+
+    void ChangeEmotion(int delta) {
+        emotionLevel += delta;
+        if (emotionLevel > 100) emotionLevel = 100;
+        if (emotionLevel < 0)   emotionLevel = 0;
+    }
+
+    void UpdateRelationship(int delta) {
+        relationshipLevel += delta;
+        if (relationshipLevel > 100) relationshipLevel = 100;
+        if (relationshipLevel < 0)   relationshipLevel = 0;
+    }
+
+    std::string GetEmotionText() const {
+        if (emotionLevel <= 30) return "Trist";
+        else if (emotionLevel <= 50) return "Neutru";
+        else if (emotionLevel <= 70) return "Fericit";
+        else return "Entuziasmat";
+    }
+
+    std::string GetRelationshipStage() const {
+        if (relationshipLevel < 30) return "Inamici";
+        else if (relationshipLevel < 50) return "Neutru";
+        else if (relationshipLevel < 70) return "Prietenie";
+        else return "Mai mult decat prieten";
+    }
 };
 
-void print() const {
-    std::cout << "Name: " << name << "\n";
-    std::cout << "Role: " << role << "\n";
-    std::cout << "Description: " << description << "\n";
-    std::cout << "Emotion: " << emotion << "\n";
-    std::cout << "Relationship Level: " << relationshipLevel << "\n";
-	std::cout << "Active: " << (isActive ? "Yes" : "No") << "\n";
-}
 
-void updateEmotion(const std::string& newEmotion) {
-    emotion = newEmotion;
-}
 
-void updateRelationship(int change ) {
-	relationshipLevel += change;
-    }
