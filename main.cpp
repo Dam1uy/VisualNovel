@@ -7,3 +7,7 @@ int main() {
     engine.Loop();           
     return 0;
 }
+std::cout << "Press Enter to exit...";
+std::cin.ignore();
+std::cin.get();
+
