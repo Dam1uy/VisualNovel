@@ -12,27 +12,26 @@ public:
     int currentSceneId;
     std::string playerName;
 
-    std::vector<Character> characters; // toate personajele
-    std::vector<Scene> scenes;         // toate scenele
+    std::vector<Character> characters; // all characters
+    std::vector<Scene> scenes;         // all scenes
 
     Engine() : isRunning(false), currentSceneId(0) {}
 
-    // Initializează jocul
+    // Initialize the game
     void Init(const std::string& name) {
         playerName = name;
         isRunning = true;
-        currentSceneId = 0; // scena de start
+        currentSceneId = 0; // start scene
 
-        // Încearcă să încarce jocul salvat
         if (LoadGame()) {
-            std::cout << "Continuăm jocul anterior...\n";
+            std::cout << "Continuing previous game...\n";
         }
         else {
-            std::cout << "Joc nou pentru " << playerName << "\n";
+            std::cout << "New game for " << playerName << "\n";
         }
     }
 
-    // Salvează starea jocului într-un fișier text
+    // Save game state to file
     void SaveGame() {
         std::ofstream file("save.txt");
         if (!file) return;
@@ -46,16 +45,16 @@ public:
         }
 
         file.close();
-        std::cout << "Joc salvat!\n";
+        std::cout << "Game saved!\n";
     }
 
-    // Încarcă jocul salvat (dacă există)
+    // Load saved game (if exists)
     bool LoadGame() {
         std::ifstream file("save.txt");
         if (!file) return false;
 
         file >> currentSceneId;
-        file.ignore(); // sărim linia cu numele jucătorului
+        file.ignore();
         std::getline(file, playerName);
 
         for (auto& c : characters) {
@@ -73,10 +72,10 @@ public:
         return true;
     }
 
-    // Rulează un update – afișează scena și dialogurile
+    // Update – display scene and dialogs
     void Update() {
         if (currentSceneId < 0 || currentSceneId >= scenes.size()) {
-            std::cout << "Nu exista scena curenta!\n";
+            std::cout << "Current scene does not exist!\n";
             isRunning = false;
             return;
         }
@@ -84,40 +83,37 @@ public:
         Scene& scene = scenes[currentSceneId];
         scene.ShowScene();
 
-        // Pentru fiecare dialog, aplică alegerea jucătorului
         for (auto& dialog : scene.dialogs) {
             if (!dialog.choices.empty()) {
                 int choice;
-                std::cout << "Alege o optiune: ";
+                std::cout << "Choose an option: ";
                 std::cin >> choice;
 
-                // aplică asupra primului personaj (poți extinde la mai multe)
                 if (!characters.empty())
                     dialog.ApplyChoice(characters[0], choice);
 
-                std::cout << "Starea personajului:\n";
+                std::cout << "Character status:\n";
                 characters[0].Print();
             }
         }
 
-        // Salvăm jocul automat după fiecare scenă
         SaveGame();
 
-        // Mergem la următoarea scenă, dacă există
         if (!scene.nextSceneIds.empty()) {
-            currentSceneId = scene.nextSceneIds[0]; // simplu, doar prima opțiune
+            currentSceneId = scene.nextSceneIds[0];
         }
         else {
-            isRunning = false; // joc terminat
+            isRunning = false;
         }
     }
 
-    // Bucla principală a jocului
+    // Main game loop
     void Loop() {
         while (isRunning) {
             Update();
         }
-        std::cout << "Joc terminat.\n";
+        std::cout << "Game over.\n";
     }
 };
+
 

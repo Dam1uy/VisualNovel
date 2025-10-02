@@ -5,9 +5,9 @@
 
 struct Choice {
     int id;
-    std::string text;      
-    int emotionDelta;      
-    int relationshipDelta; 
+    std::string text;
+    int emotionDelta;
+    int relationshipDelta;
 };
 
 struct Dialog {
@@ -25,3 +25,4 @@ struct Dialog {
         }
     }
 };
+

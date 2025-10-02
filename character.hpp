@@ -18,10 +18,10 @@ struct Character {
     }
 
     void Print() const {
-        std::cout << "Nume: " << name
-            << " | Emoție: " << emotionLevel << "/100"
-            << " | Relație: " << relationshipLevel << "/100"
-            << " | Activ: " << (isActive ? "da" : "nu")
+        std::cout << "Name: " << name
+            << " | Emotion: " << emotionLevel << "/100"
+            << " | Relationship: " << relationshipLevel << "/100"
+            << " | Active: " << (isActive ? "yes" : "no")
             << std::endl;
     }
 
@@ -38,19 +38,20 @@ struct Character {
     }
 
     std::string GetEmotionText() const {
-        if (emotionLevel <= 30) return "Trist";
-        else if (emotionLevel <= 50) return "Neutru";
-        else if (emotionLevel <= 70) return "Fericit";
-        else return "Entuziasmat";
+        if (emotionLevel <= 30) return "Sad";
+        else if (emotionLevel <= 50) return "Neutral";
+        else if (emotionLevel <= 70) return "Happy";
+        else return "Excited";
     }
 
     std::string GetRelationshipStage() const {
-        if (relationshipLevel < 30) return "Inamici";
-        else if (relationshipLevel < 50) return "Neutru";
-        else if (relationshipLevel < 70) return "Prietenie";
-        else return "Mai mult decat prieten";
+        if (relationshipLevel < 30) return "Enemies";
+        else if (relationshipLevel < 50) return "Neutral";
+        else if (relationshipLevel < 70) return "Friendship";
+        else return "More than a friend";
     }
 };
+
 
 
 
