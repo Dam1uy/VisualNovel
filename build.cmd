@@ -45,5 +45,5 @@ set APP_NAME=VisualNovel
 	%RM% build\*.lib
 	%RM% build\*.exe
 	%RMDIR% build
-
 :eof
+pause
