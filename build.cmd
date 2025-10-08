@@ -38,6 +38,7 @@ set APP_NAME=VisualNovel
 	%CXX% %LDFLAGS% build\main.obj build\character.obj build\Dialog.obj build\engine.obj build\Scene.obj -Febuild\%APP_NAME%.exe
 	echo Build complete: build\%APP_NAME%.exe
 	goto :eof
+	pause
 
 
 :clean
@@ -46,9 +47,4 @@ set APP_NAME=VisualNovel
 	%RM% build\*.exe
 	%RMDIR% build
 :eof
-echo ===============================
-echo Compilation finished successfully!
-echo Executable: build\%APP_NAME%.exe
-echo ===============================
-pause
 
