@@ -46,4 +46,9 @@ set APP_NAME=VisualNovel
 	%RM% build\*.exe
 	%RMDIR% build
 :eof
+echo ===============================
+echo Compilation finished successfully!
+echo Executable: build\%APP_NAME%.exe
+echo ===============================
 pause
+
