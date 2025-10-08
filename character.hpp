@@ -6,11 +6,11 @@ struct Character {
     std::string name;
     std::string role;
     std::string description;
-    int emotionLevel;       // 0 - 100
-    int relationshipLevel;  // 0 - 100
+    int emotionLevel;       
+    int relationshipLevel;  
     bool isActive;
 
-    // Constructor
+    
     Character(const std::string& n, const std::string& r, const std::string& d);
 
     void Print() const;

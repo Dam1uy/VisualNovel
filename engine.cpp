@@ -9,11 +9,11 @@
 
 Engine::Engine() : isRunning(false), currentSceneId(0) {}
 
-// Initialize the game
+
 void Engine::Init(const std::string& name) {
 	playerName = name;
 	isRunning = true;
-	currentSceneId = 0; // start scene
+	currentSceneId = 0; 
 
 	if (LoadGame()) {
 		std::cout << "Continuing previous game...\n";
@@ -23,7 +23,7 @@ void Engine::Init(const std::string& name) {
 	}
 }
 
-// Save game state to file
+
 void Engine::SaveGame() {
 	std::ofstream file("save.txt");
 	if (!file) return;
@@ -40,7 +40,7 @@ void Engine::SaveGame() {
 	std::cout << "Game saved!\n";
 }
 
-// Load saved game (if exists)
+
 bool Engine::LoadGame() {
 	std::ifstream file("save.txt");
 	if (!file) return false;
@@ -63,8 +63,6 @@ bool Engine::LoadGame() {
 	file.close();
 	return true;
 }
-
-// Update – display scene and dialogs
 void Engine::Update() {
 	if (currentSceneId < 0 || currentSceneId >= (int)scenes.size()) {
 		std::cout << "Current scene does not exist!\n";
@@ -99,7 +97,6 @@ void Engine::Update() {
 	}
 }
 
-// Main game loop
 void Engine::Loop() {
 	while (isRunning) {
 		Update();
