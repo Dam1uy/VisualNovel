@@ -1,43 +1,38 @@
-﻿# Visual Novel
+﻿# VisualNovel
 
-## Character.hpp
-- Adăugat `emotionLevel` (0-100) pentru a urmări intensitatea emoției personajului.
-- Adăugat `relationshipLevel` (0-100) pentru a urmări relația cu jucătorul.
-- Adăugat `ChangeEmotion(int delta)` pentru a modifica nivelul emoției.
-- Adăugat `UpdateRelationship(int delta)` pentru a modifica nivelul relației.
-- Adăugat `GetEmotionText()` pentru a returna emoția ca text.
-- Adăugat `GetRelationshipStage()` pentru a returna stadiul relației ca text.
+## Scopul proiectului
 
-## Dialog.hpp
-- Adăugat structura `Choice` cu `id`, `text`, `emotionDelta` și `relationshipDelta`.
-- Adăugat structura `Dialog` cu `dialogId`, `speaker`, `text` și `choices`.
-- Adăugat metoda `ApplyChoice(Character& c, int choiceId)` pentru a aplica efectele unei alegeri asupra unui personaj.
+Acest proiect are ca scop familiarizarea studentului cu implementarea claselor și interacțiunea cu obiectele acestora în C++. De asemenea, studentul va dobândi cunoștințe de bază despre compilarea și construcția proiectelor din linia de comandă, gestionarea fișierelor sursă și utilizarea unui sistem de versionare (Git).
 
-## Scene.hpp
-- Adăugat structura `Scene` cu `sceneId`, `name`, `description`, `backgroundImage`, `musicTrack`, `isLocked`, `nextSceneIds` și `dialogs`.
-- Adăugată metoda `ShowScene()` pentru a afișa scena și dialogurile acesteia.
+## Structura și rolul fișierelor
 
-## Engine.hpp / engine.cpp
-- Adăugată clasa `Engine` pentru a gestiona bucla jocului și starea acestuia.
-- Membri adăugați: `isRunning`, `currentSceneId`, `playerName`, `characters`, `scenes`.
-- Metode adăugate:
-  - `Init(const std::string& name)` – inițializează jocul și încarcă fișierul salvat.
-  - `SaveGame()` – salvează starea jocului în fișier.
-  - `LoadGame()` – încarcă starea jocului din fișier.
-  - `Update()` – procesează scena curentă, dialogurile și alegerile.
-  - `Loop()` – bucla principală a jocului.
+### character.hpp / character.cpp
+- **Ce conține:** Definirea structurii `Character` cu atribute pentru nume, rol, descriere, nivel de emoție, nivel de relație și stare activă.
+- **Pentru ce se folosește:** Reprezintă un personaj din joc și oferă metode pentru afișare, modificarea emoției și relației, precum și obținerea unor descrieri simple ale stării.
 
-## main.cpp
-- Adăugat punct de intrare simplu:
-  - Creează obiect `Engine`.
-  - Inițializează cu numele jucătorului.
-  - Apelează `Loop()` pentru a porni jocul.
+### Dialog.hpp / Dialog.cpp
+- **Ce conține:** Structura `Dialog` cu atribute pentru identificator, vorbitor, text, emoție, importanță, legături către dialoguri următoare și opțiuni de alegere.
+- **Pentru ce se folosește:** Permite gestionarea dialogurilor din joc și aplicarea efectelor alegerilor asupra personajelor.
 
-## build.cmd
-- Adăugat script pentru a compila `engine.cpp` și `main.cpp` și a le lega într-un `VisualNovel.exe`.
+### Scene.hpp / Scene.cpp
+- **Ce conține:** Structura `Scene` cu atribute pentru identificator, nume, descriere, imagine de fundal, muzică, stare de blocare, legături către scene următoare și dialoguri.
+- **Pentru ce se folosește:** Reprezintă o scenă din poveste, cu metode pentru afișarea conținutului acesteia.
 
-## .gitignore
-- Adăugat intrări pentru a ignora fișierele obiect (*.obj) și executabile (*.exe), plus artefacte comune de build.
+### Engine.hpp / engine.cpp
+- **Ce conține:** Clasa `Engine` cu atribute pentru starea jocului, scena curentă, numele jucătorului, lista de personaje și scene.
+- **Pentru ce se folosește:** Gestionează logica principală a jocului, inițializarea, actualizarea și rularea buclei de joc.
+
+### main.cpp
+- **Ce conține:** Punctul de intrare al aplicației.
+- **Pentru ce se folosește:** Creează un obiect `Engine`, îl inițializează cu numele jucătorului și pornește bucla principală a jocului.
+
+### build.cmd
+- **Ce conține:** Script pentru compilarea fișierelor sursă și generarea executabilului.
+- **Pentru ce se folosește:** Permite construcția manuală a proiectului din linia de comandă, fără a folosi un IDE.
+
+### .gitignore
+- **Ce conține:** Reguli pentru ignorarea fișierelor obiect, executabile și artefacte temporare.
+- **Pentru ce se folosește:** Asigură că fișierele generate automat nu sunt urcate în repository.
 
 
 
