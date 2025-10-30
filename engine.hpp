@@ -1,8 +1,9 @@
 ﻿#pragma once
 #include <string>
 #include <vector>
-
-#include "Character.hpp"
+#include <memory>
+#include <algorithm>
+#include "character.hpp"
 #include "Scene.hpp"
 
 class Engine {
@@ -11,24 +12,13 @@ public:
     int currentSceneId;
     std::string playerName;
 
-    std::vector<Character> characters; 
-    std::vector<Scene> scenes;         
+    std::vector<std::shared_ptr<Character>> characters;
+    std::vector<std::shared_ptr<Scene>> scenes;
 
     Engine();
 
-    
     void Init(const std::string& name);
-
-    
-    void SaveGame();
-
-    
-    bool LoadGame();
-
-    
     void Update();
-
-    
     void Loop();
 };
 

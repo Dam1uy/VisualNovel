@@ -2,6 +2,8 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <memory>
+#include <algorithm>
 #include "Dialog.hpp"
 
 struct Renderable {
@@ -17,7 +19,7 @@ struct Scene : public Renderable {
     std::string musicTrack;
     bool isLocked;
     std::vector<int> nextSceneIds;
-    std::vector<Dialog> dialogs;
+    std::vector<std::shared_ptr<Dialog>> dialogs;
 
     Scene() = default;
     Scene(int id, const std::string& n, const std::string& desc)
@@ -43,5 +45,13 @@ struct Scene : public Renderable {
     }
 
     void Render() const override { std::cout << *this << std::endl; }
+
+    // STL algorithm: sort dialogs by speaker name
+    void SortDialogs() {
+        std::sort(dialogs.begin(), dialogs.end(),
+            [](const std::shared_ptr<Dialog>& a, const std::shared_ptr<Dialog>& b) {
+                return a->speaker < b->speaker;
+            });
+    }
 };
 

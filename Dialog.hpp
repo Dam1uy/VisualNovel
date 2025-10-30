@@ -2,7 +2,9 @@
 #include <string>
 #include <vector>
 #include <iostream>
-#include "Character.hpp"
+#include <memory>
+#include <algorithm>
+#include "character.hpp"
 
 struct Choice {
     int id;
@@ -41,5 +43,12 @@ struct Dialog : public Renderable {
     }
 
     void Render() const override { std::cout << *this << std::endl; }
+
+    // STL algorithm: find_if for choices
+    const Choice* FindChoice(int choiceId) const {
+        auto it = std::find_if(choices.begin(), choices.end(),
+            [choiceId](const Choice& c) { return c.id == choiceId; });
+        return it != choices.end() ? &(*it) : nullptr;
+    }
 };
 
