@@ -4,7 +4,7 @@
 #include <memory>
 #include <algorithm>
 
-// Clasa de bază abstractă pentru redare
+
 struct Renderable {
     virtual void Render() const = 0;
     virtual ~Renderable() = default;
