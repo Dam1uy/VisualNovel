@@ -4,7 +4,6 @@
 #include <memory>
 #include <algorithm>
 
-
 struct Renderable {
     virtual void Render() const = 0;
     virtual ~Renderable() = default;
@@ -19,8 +18,7 @@ struct Character : public Renderable {
     bool isActive;
 
     Character() = default;
-    Character(const std::string& n, const std::string& r, const std::string& d)
-        : name(n), role(r), description(d), emotionLevel(0), relationshipLevel(0), isActive(true) {}
+    Character(const std::string& n, const std::string& r, const std::string& d);
     Character(const Character& other) = default;
     Character& operator=(const Character& other) = default;
 
@@ -39,6 +37,15 @@ struct Character : public Renderable {
     }
 
     void Render() const override { std::cout << *this << std::endl; }
+
+    // Adaugă aceste metode pentru Dialog::ApplyChoice
+    void ChangeEmotion(int delta) {
+        emotionLevel += delta;
+    }
+
+    void UpdateRelationship(int delta) {
+        relationshipLevel += delta;
+    }
 };
 
 
