@@ -1,24 +1,17 @@
 ﻿#pragma once
 #include <string>
-#include <vector>
-#include <memory>
-#include "character.hpp"
-#include "dialog.hpp"
+#include <fstream> // Biblioteca externă
 
-class NovelEngine {
-private:
-    bool isRunning;
-    std::string playerName;
-    std::vector<std::shared_ptr<Character>> characters;
+namespace NovelLib {
+    class GameEngine {
+    private:
+        std::string playerName;
 
-public:
-    NovelEngine();
-    void Init(const std::string& name);
-    void Update();
-    void Run();
-
-    // Metodă care folosește biblioteca externă
-    void SaveGame(const std::string& filename);
-};
+    public:
+        void Initialize(const std::string& name);
+        void ShowDialogue(const std::string& speaker, const std::string& text);
+        void SaveProgress(); // Folosește biblioteca externă
+    };
+}
 
 

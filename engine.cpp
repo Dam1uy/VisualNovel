@@ -1,39 +1,25 @@
-﻿#include "novel_engine.hpp"
-#include <fstream>
-#include <algorithm>
+﻿#include "engine.hpp"
+#include <iostream>
 
-NovelEngine::NovelEngine() : isRunning(false) {}
+namespace NovelLib {
+    void GameEngine::Initialize(const std::string& name) {
+        playerName = name;
+        std::cout << "=== Visual Novel ===\n";
+        std::cout << "Jucator: " << playerName << "\n\n";
+    }
 
-void NovelEngine::Init(const std::string& name) {
-    playerName = name;
-    isRunning = true;
+    void GameEngine::ShowDialogue(const std::string& speaker, const std::string& text) {
+        std::cout << speaker << ": " << text << "\n";
+    }
 
-    // Inițializare personaje
-    characters.push_back(std::make_shared<Character>("Maya", "Protagonist", "Main character"));
-    characters.push_back(std::make_shared<Character>("Leo", "Friend", "Best friend"));
+    void GameEngine::SaveProgress() {
+        // Folosim biblioteca externă <fstream> pentru salvare
+        std::ofstream saveFile("novel_save.txt");
+        saveFile << "Salvare joc visual novel\n";
+        saveFile << "Jucator: " << playerName << "\n";
+        saveFile << "Progres: Scene 1 complet\n";
+        saveFile.close();
 
-    std::cout << "Novel Engine initialized for: " << playerName << "\n";
-}
-
-void NovelEngine::Update() {
-    std::cout << "Story progresses...\n";
-    for (auto& character : characters) {
-        character->Render();
+        std::cout << "\n[Progres salvat cu succes!]\n";
     }
 }
-
-void NovelEngine::Run() {
-    while (isRunning) {
-        Update();
-        isRunning = false; // Simplificat pentru demonstrație
-    }
-}
-
-void NovelEngine::SaveGame(const std::string& filename) {
-    // Folosire bibliotecă externă pentru serializare
-    std::ofstream file(filename);
-    file << "Saved Game for: " << playerName << "\n";
-    file << "Characters: " << characters.size() << "\n";
-    std::cout << "Game saved using external library!\n";
-}
-

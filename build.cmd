@@ -1,21 +1,16 @@
 @echo off
-echo Building Visual Novel with static library...
+echo Building Visual Novel for lab05 branch...
 
 mkdir build 2>nul
 cd build
 
-cmake .. -G "MinGW Makefiles"
-if %errorlevel% neq 0 (
-    echo CMake configuration failed!
-    exit /b 1
-)
+echo Compiling static library...
+g++ -c ../engine.cpp -o novel_engine.o
+ar rcs libnovel_engine.a novel_engine.o
 
-cmake --build .
-if %errorlevel% eq 0 (
-    echo Build successful!
-    echo Running visual novel...
-    .\visual_novel.exe
-) else (
-    echo Build failed!
-)
+echo Building executable with library...
+g++ ../main.cpp -L. -lnovel_engine -o visual_novel_lab05.exe
+
+echo Running visual novel...
+visual_novel_lab05.exe
 
