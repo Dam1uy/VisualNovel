@@ -56,6 +56,27 @@ build CMakeFiles\novel_engine.dir\engine.cpp.obj: CXX_COMPILER__novel_engine_uns
   TARGET_COMPILE_PDB = CMakeFiles\novel_engine.dir\novel_engine.pdb
   TARGET_PDB = novel_engine.pdb
 
+build CMakeFiles\novel_engine.dir\character.cpp.obj: CXX_COMPILER__novel_engine_unscanned_Debug D$:\Learning$ materials\FileC++\character.cpp || cmake_object_order_depends_target_novel_engine
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  OBJECT_DIR = CMakeFiles\novel_engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\novel_engine.dir
+  TARGET_COMPILE_PDB = CMakeFiles\novel_engine.dir\novel_engine.pdb
+  TARGET_PDB = novel_engine.pdb
+
+build CMakeFiles\novel_engine.dir\Dialog.cpp.obj: CXX_COMPILER__novel_engine_unscanned_Debug D$:\Learning$ materials\FileC++\Dialog.cpp || cmake_object_order_depends_target_novel_engine
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  OBJECT_DIR = CMakeFiles\novel_engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\novel_engine.dir
+  TARGET_COMPILE_PDB = CMakeFiles\novel_engine.dir\novel_engine.pdb
+  TARGET_PDB = novel_engine.pdb
+
+build CMakeFiles\novel_engine.dir\Scene.cpp.obj: CXX_COMPILER__novel_engine_unscanned_Debug D$:\Learning$ materials\FileC++\Scene.cpp || cmake_object_order_depends_target_novel_engine
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  OBJECT_DIR = CMakeFiles\novel_engine.dir
+  OBJECT_FILE_DIR = CMakeFiles\novel_engine.dir
+  TARGET_COMPILE_PDB = CMakeFiles\novel_engine.dir\novel_engine.pdb
+  TARGET_PDB = novel_engine.pdb
+
 
 # =============================================================================
 # Link build statements for STATIC_LIBRARY target novel_engine
@@ -64,7 +85,7 @@ build CMakeFiles\novel_engine.dir\engine.cpp.obj: CXX_COMPILER__novel_engine_uns
 #############################################
 # Link the static library novel_engine.lib
 
-build novel_engine.lib: CXX_STATIC_LIBRARY_LINKER__novel_engine_Debug CMakeFiles\novel_engine.dir\engine.cpp.obj
+build novel_engine.lib: CXX_STATIC_LIBRARY_LINKER__novel_engine_Debug CMakeFiles\novel_engine.dir\engine.cpp.obj CMakeFiles\novel_engine.dir\character.cpp.obj CMakeFiles\novel_engine.dir\Dialog.cpp.obj CMakeFiles\novel_engine.dir\Scene.cpp.obj
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64
   OBJECT_DIR = CMakeFiles\novel_engine.dir

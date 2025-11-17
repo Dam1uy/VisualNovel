@@ -41,14 +41,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "novel_engine::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-novel_engine-Debug-33859fad3c8012b590af.json",
+					"jsonFile" : "target-novel_engine-Debug-5e589eaec2574ca74102.json",
 					"name" : "novel_engine",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "visual_novel::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-visual_novel-Debug-040d256a2c92a4676bd3.json",
+					"jsonFile" : "target-visual_novel-Debug-de783d6c424093f41d45.json",
 					"name" : "visual_novel",
 					"projectIndex" : 0
 				}
