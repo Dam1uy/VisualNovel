@@ -46,7 +46,7 @@ struct Scene : public Renderable {
 
     void Render() const override { std::cout << *this << std::endl; }
 
-    // STL algorithm: sort dialogs by speaker name
+    
     void SortDialogs() {
         std::sort(dialogs.begin(), dialogs.end(),
             [](const std::shared_ptr<Dialog>& a, const std::shared_ptr<Dialog>& b) {

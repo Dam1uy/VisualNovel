@@ -2,24 +2,23 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include <algorithm>
 #include "character.hpp"
-#include "Scene.hpp"
+#include "dialog.hpp"
 
-class Engine {
-public:
+class NovelEngine {
+private:
     bool isRunning;
-    int currentSceneId;
     std::string playerName;
-
     std::vector<std::shared_ptr<Character>> characters;
-    std::vector<std::shared_ptr<Scene>> scenes;
 
-    Engine();
-
+public:
+    NovelEngine();
     void Init(const std::string& name);
     void Update();
-    void Loop();
+    void Run();
+
+    // Metodă care folosește biblioteca externă
+    void SaveGame(const std::string& filename);
 };
 
 

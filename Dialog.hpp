@@ -44,7 +44,7 @@ struct Dialog : public Renderable {
 
     void Render() const override { std::cout << *this << std::endl; }
 
-    // STL algorithm: find_if for choices
+    
     const Choice* FindChoice(int choiceId) const {
         auto it = std::find_if(choices.begin(), choices.end(),
             [choiceId](const Choice& c) { return c.id == choiceId; });

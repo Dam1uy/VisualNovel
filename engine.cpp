@@ -1,40 +1,39 @@
-﻿    #include "engine.hpp"
-#include <iostream>
+﻿#include "novel_engine.hpp"
+#include <fstream>
 #include <algorithm>
 
-Engine::Engine() : isRunning(false), currentSceneId(0) {}
+NovelEngine::NovelEngine() : isRunning(false) {}
 
-void Engine::Init(const std::string& name) {
+void NovelEngine::Init(const std::string& name) {
     playerName = name;
     isRunning = true;
-    currentSceneId = 0;
 
-    // Exemplu: adăugare personaje folosind smart pointers
-    characters.push_back(std::make_shared<Character>("Alex", "Detective", "Main character"));
-    characters.push_back(std::make_shared<Character>("Mira", "Friend", "Childhood friend"));
+    // Inițializare personaje
+    characters.push_back(std::make_shared<Character>("Maya", "Protagonist", "Main character"));
+    characters.push_back(std::make_shared<Character>("Leo", "Friend", "Best friend"));
 
-    // Sortare personaje după nume (algoritm STL)
-    std::sort(characters.begin(), characters.end(),
-        [](const std::shared_ptr<Character>& a, const std::shared_ptr<Character>& b) {
-            return a->name < b->name;
-        });
+    std::cout << "Novel Engine initialized for: " << playerName << "\n";
 }
 
-void Engine::Update() {
-    std::cout << "Update called. Current scene: " << currentSceneId << "\n";
-    // Exemplu: căutare personaj după nume (algoritm STL)
-    auto it = std::find_if(characters.begin(), characters.end(),
-        [](const std::shared_ptr<Character>& c) { return c->name == "Alex"; });
-    if (it != characters.end()) {
-        (*it)->Render();
+void NovelEngine::Update() {
+    std::cout << "Story progresses...\n";
+    for (auto& character : characters) {
+        character->Render();
     }
 }
 
-void Engine::Loop() {
+void NovelEngine::Run() {
     while (isRunning) {
         Update();
-        isRunning = false;
+        isRunning = false; // Simplificat pentru demonstrație
     }
-    std::cout << "Game over.\n";
+}
+
+void NovelEngine::SaveGame(const std::string& filename) {
+    // Folosire bibliotecă externă pentru serializare
+    std::ofstream file(filename);
+    file << "Saved Game for: " << playerName << "\n";
+    file << "Characters: " << characters.size() << "\n";
+    std::cout << "Game saved using external library!\n";
 }
 
