@@ -1,33 +1,53 @@
 ﻿#include "character.hpp"
-#include <iostream>
 
+// Constructor implicit
+Character::Character()
+    : name(""), role(""), description("") {
+}
+
+// Constructor cu parametri
 Character::Character(const std::string& n, const std::string& r, const std::string& d)
-    : name(n), role(r), description(d),
-      emotionLevel(50), relationshipLevel(0),
-      isActive(true) {
+    : name(n), role(r), description(d) {
 }
 
-void Character::Print() const {
-    std::cout << "Name: " << name << std::endl;
+// Constructor de copiere
+Character::Character(const Character& other)
+    : name(other.name), role(other.role), description(other.description) {
 }
 
-void Character::ChangeEmotion(int delta) {
-    emotionLevel += delta;
+// Operator de atribuire
+Character& Character::operator=(const Character& other) {
+    if (this != &other) {
+        name = other.name;
+        role = other.role;
+        description = other.description;
+    }
+    return *this;
 }
 
-void Character::UpdateRelationship(int delta) {
-    relationshipLevel += delta;
+// Operator ==
+bool Character::operator==(const Character& other) const {
+    return name == other.name && role == other.role;
 }
 
-std::string Character::GetEmotionText() const {
-    return "Emotion";
+// Operator !=
+bool Character::operator!=(const Character& other) const {
+    return !(*this == other);
 }
 
-std::string Character::GetRelationshipStage() const {
-    return "Relationship";
+// Operator <<
+std::ostream& operator<<(std::ostream& os, const Character& c) {
+    os << c.name << " (" << c.role << ")";
+    return os;
 }
 
+// Operator >>
+std::istream& operator>>(std::istream& is, Character& c) {
+    is >> c.name >> c.role;
+    return is;
+}
 
-
-
-
+// Render
+void Character::Render() const {
+    std::cout << *this << "\n";
+}

@@ -1,0 +1,4 @@
+D:/Learning materials/FileC++/out/build/x64-Debug/CMakeFiles/novel_core.dir
+D:/Learning materials/FileC++/out/build/x64-Debug/CMakeFiles/visual_novel.dir
+D:/Learning materials/FileC++/out/build/x64-Debug/CMakeFiles/edit_cache.dir
+D:/Learning materials/FileC++/out/build/x64-Debug/CMakeFiles/rebuild_cache.dir
