@@ -1,0 +1,4 @@
+D:/Learning materials/FileC++/build/CMakeFiles/novel_engine.dir
+D:/Learning materials/FileC++/build/CMakeFiles/visual_novel.dir
+D:/Learning materials/FileC++/build/CMakeFiles/ALL_BUILD.dir
+D:/Learning materials/FileC++/build/CMakeFiles/ZERO_CHECK.dir

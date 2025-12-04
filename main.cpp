@@ -1,10 +1,8 @@
 ﻿#include "engine.hpp"
-#include <iostream>
 
 int main() {
-    Engine engine;
-    engine.Init("Player1");
-    engine.Loop();
+    Engine eng;
+    eng.Init("Player1");
+    eng.Update();
     return 0;
 }
-
