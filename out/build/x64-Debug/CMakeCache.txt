@@ -127,6 +127,21 @@ CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 //Value Computed by CMake
 CMAKE_PROJECT_NAME:STATIC=VisualNovelLab05
 
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION:STATIC=1.0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MAJOR:STATIC=1
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_MINOR:STATIC=0
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_PATCH:STATIC=
+
+//Value Computed by CMake
+CMAKE_PROJECT_VERSION_TWEAK:STATIC=
+
 //RC compiler
 CMAKE_RC_COMPILER:FILEPATH=D:/Windows Kits/10/bin/10.0.26100.0/x64/rc.exe
 
@@ -215,6 +230,18 @@ VisualNovelLab05_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
 VisualNovelLab05_SOURCE_DIR:STATIC=D:/Learning materials/FileC++
+
+//The directory containing a CMake configuration file for nlohmann_json.
+nlohmann_json_DIR:PATH=nlohmann_json_DIR-NOTFOUND
+
+//Value Computed by CMake
+visual_novel_BINARY_DIR:STATIC=D:/Learning materials/FileC++/out/build/x64-Debug
+
+//Value Computed by CMake
+visual_novel_IS_TOP_LEVEL:STATIC=ON
+
+//Value Computed by CMake
+visual_novel_SOURCE_DIR:STATIC=D:/Learning materials/FileC++
 
 
 ########################

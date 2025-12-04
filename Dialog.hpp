@@ -5,6 +5,7 @@
 #include <memory>
 #include <algorithm>
 #include "character.hpp"
+#include "renderable.hpp"
 
 struct Choice {
     int id;
@@ -21,7 +22,8 @@ struct Dialog : public Renderable {
 
     Dialog() = default;
     Dialog(int id, const std::string& sp, const std::string& t)
-        : dialogId(id), speaker(sp), text(t) {}
+        : dialogId(id), speaker(sp), text(t) {
+    }
     Dialog(const Dialog& other) = default;
     Dialog& operator=(const Dialog& other) = default;
 
@@ -44,11 +46,14 @@ struct Dialog : public Renderable {
 
     void Render() const override { std::cout << *this << std::endl; }
 
-    
+    // Important: method used from cpp
+    void ApplyChoice(Character& c, int choiceId);
+
     const Choice* FindChoice(int choiceId) const {
         auto it = std::find_if(choices.begin(), choices.end(),
             [choiceId](const Choice& c) { return c.id == choiceId; });
         return it != choices.end() ? &(*it) : nullptr;
     }
 };
+
 

@@ -1,0 +1,10 @@
+^D:\LEARNING MATERIALS\FILEC++\BUILD\CMAKEFILES\2D45D196A2C791245B15942201CF0385\GENERATE.STAMP.RULE
+setlocal
+D:\Aps\Cmake\bin\cmake.exe "-SD:/Learning materials/FileC++" "-BD:/Learning materials/FileC++/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "D:/Learning materials/FileC++/build/VisualNovelLab05.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

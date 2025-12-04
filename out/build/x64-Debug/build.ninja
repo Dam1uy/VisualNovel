@@ -50,28 +50,14 @@ cmake_ninja_workdir = D$:\Learning$ materials\FileC++\out\build\x64-Debug\
 build cmake_object_order_depends_target_novel_engine: phony || .
 
 build CMakeFiles\novel_engine.dir\engine.cpp.obj: CXX_COMPILER__novel_engine_unscanned_Debug D$:\Learning$ materials\FileC++\engine.cpp || cmake_object_order_depends_target_novel_engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /utf-8
   OBJECT_DIR = CMakeFiles\novel_engine.dir
   OBJECT_FILE_DIR = CMakeFiles\novel_engine.dir
   TARGET_COMPILE_PDB = CMakeFiles\novel_engine.dir\novel_engine.pdb
   TARGET_PDB = novel_engine.pdb
 
 build CMakeFiles\novel_engine.dir\character.cpp.obj: CXX_COMPILER__novel_engine_unscanned_Debug D$:\Learning$ materials\FileC++\character.cpp || cmake_object_order_depends_target_novel_engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
-  OBJECT_DIR = CMakeFiles\novel_engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\novel_engine.dir
-  TARGET_COMPILE_PDB = CMakeFiles\novel_engine.dir\novel_engine.pdb
-  TARGET_PDB = novel_engine.pdb
-
-build CMakeFiles\novel_engine.dir\Dialog.cpp.obj: CXX_COMPILER__novel_engine_unscanned_Debug D$:\Learning$ materials\FileC++\Dialog.cpp || cmake_object_order_depends_target_novel_engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
-  OBJECT_DIR = CMakeFiles\novel_engine.dir
-  OBJECT_FILE_DIR = CMakeFiles\novel_engine.dir
-  TARGET_COMPILE_PDB = CMakeFiles\novel_engine.dir\novel_engine.pdb
-  TARGET_PDB = novel_engine.pdb
-
-build CMakeFiles\novel_engine.dir\Scene.cpp.obj: CXX_COMPILER__novel_engine_unscanned_Debug D$:\Learning$ materials\FileC++\Scene.cpp || cmake_object_order_depends_target_novel_engine
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /utf-8
   OBJECT_DIR = CMakeFiles\novel_engine.dir
   OBJECT_FILE_DIR = CMakeFiles\novel_engine.dir
   TARGET_COMPILE_PDB = CMakeFiles\novel_engine.dir\novel_engine.pdb
@@ -85,7 +71,7 @@ build CMakeFiles\novel_engine.dir\Scene.cpp.obj: CXX_COMPILER__novel_engine_unsc
 #############################################
 # Link the static library novel_engine.lib
 
-build novel_engine.lib: CXX_STATIC_LIBRARY_LINKER__novel_engine_Debug CMakeFiles\novel_engine.dir\engine.cpp.obj CMakeFiles\novel_engine.dir\character.cpp.obj CMakeFiles\novel_engine.dir\Dialog.cpp.obj CMakeFiles\novel_engine.dir\Scene.cpp.obj
+build novel_engine.lib: CXX_STATIC_LIBRARY_LINKER__novel_engine_Debug CMakeFiles\novel_engine.dir\engine.cpp.obj CMakeFiles\novel_engine.dir\character.cpp.obj
   LANGUAGE_COMPILE_FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
   LINK_FLAGS = /machine:x64
   OBJECT_DIR = CMakeFiles\novel_engine.dir
@@ -105,7 +91,7 @@ build novel_engine.lib: CXX_STATIC_LIBRARY_LINKER__novel_engine_Debug CMakeFiles
 build cmake_object_order_depends_target_visual_novel: phony || cmake_object_order_depends_target_novel_engine
 
 build CMakeFiles\visual_novel.dir\main.cpp.obj: CXX_COMPILER__visual_novel_unscanned_Debug D$:\Learning$ materials\FileC++\main.cpp || cmake_object_order_depends_target_visual_novel
-  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1
+  FLAGS = /DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1 /utf-8
   OBJECT_DIR = CMakeFiles\visual_novel.dir
   OBJECT_FILE_DIR = CMakeFiles\visual_novel.dir
   TARGET_COMPILE_PDB = CMakeFiles\visual_novel.dir\

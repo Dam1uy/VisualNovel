@@ -1,15 +1,29 @@
 @echo off
-echo Building Visual Novel for lab05 branch...
+echo ============================================
+echo   Building Visual Novel Engine (lab05)
+echo ============================================
 
 mkdir build 2>nul
 cd build
 
-echo Running CMake...
+echo.
+echo --- Running CMake ---
 cmake ..
 
-echo Building project...
+echo.
+echo --- Building project (library + exe) ---
 cmake --build .
 
-echo Running visual novel...
-visual_novel.exe
+echo.
+echo --- Running demonstration ---
+Debug\visual_novel.exe
+
+echo.
+echo ============================================
+echo Demonstration complete.
+echo ============================================
+pause
+
+
+
 
