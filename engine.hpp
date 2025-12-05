@@ -1,18 +1,24 @@
-﻿#pragma once
+﻿/**
+ * @file Engine.hpp
+ * @project Visual Novel Engine
+ */
+
+#pragma once
 #include <string>
+#include <vector>
+#include <memory>
+#include <algorithm>
+#include "character.hpp"
 
-namespace NovelLib {
+class Engine {
+public:
+    std::string player;
+    std::vector<std::shared_ptr<Character>> characters;
 
-    class GameEngine {
-    private:
-        std::string playerName;
+    void Init(const std::string& name);
+    void Update();
+};
 
-    public:
-        void Initialize(const std::string& name);
-        void SaveProgress(); // folosește biblioteca externă <fstream>
-    };
-
-}
 
 
 

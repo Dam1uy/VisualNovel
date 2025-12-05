@@ -1,12 +1,41 @@
-﻿#include "Dialog.hpp"
+﻿/**
+ * @file Dialog.hpp
+ * @project Visual Novel Engine
+ */
 
-void Dialog::ApplyChoice(Character& c, int choiceId) {
-    auto it = std::find_if(choices.begin(), choices.end(),
-        [choiceId](const Choice& ch) { return ch.id == choiceId; });
+#pragma once
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <iostream>
+#include "character.hpp"
 
-    if (it != choices.end()) {
-        c.ChangeEmotion(it->emotionDelta);
-        c.UpdateRelationship(it->relationshipDelta);
-    }
-}
+struct Choice {
+    int id;
+    std::string text;
+    int emotionDelta;
+    int relationshipDelta;
+};
+
+struct Dialog {
+    int dialogId;
+    std::string speaker;
+    std::string text;
+    std::vector<Choice> choices;
+
+    Dialog();
+    Dialog(int id, const std::string& sp, const std::string& t);
+    Dialog(const Dialog& other);
+    Dialog& operator=(const Dialog& other);
+
+    bool operator==(const Dialog& other) const;
+    bool operator!=(const Dialog& other) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Dialog& d);
+    friend std::istream& operator>>(std::istream& is, Dialog& d);
+
+    void Render() const;
+    const Choice* FindChoice(int choiceId) const;
+};
+
 

@@ -1,14 +1,29 @@
-﻿#pragma once
-#include <string>
-#include "renderable.hpp"
+﻿/**
+ * @file Character.hpp
+ * @project Visual Novel Engine
+ * @author Denis
+ */
 
-struct Character : public Renderable {
+#pragma once
+#include <string>
+#include <iostream>
+
+struct Character {
     std::string name;
     std::string role;
-    std::string description;
 
-    Character() = default;
-    Character(const std::string& n, const std::string& r, const std::string& d);
+    Character();
+    Character(const std::string& n, const std::string& r);
+    Character(const Character& other);
+    Character& operator=(const Character& other);
 
-    void Render() const override;
+    bool operator==(const Character& other) const;
+    bool operator!=(const Character& other) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Character& c);
+    friend std::istream& operator>>(std::istream& is, Character& c);
+
+    void Print() const;
 };
+
+
