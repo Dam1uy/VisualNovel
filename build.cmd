@@ -1,17 +1,7 @@
 @echo off
-echo ===== Building Visual Novel Base (lab03) =====
-
 if not exist build mkdir build
-cd build
 
-echo -- Running CMake --
-cmake .. -G "Visual Studio 17 2022"
+cl /EHsc /W3 /Fe:build\vn.exe main.cpp character.cpp
 
-echo -- Building --
-cmake --build . --config Debug
-
-echo -- Running demo --
-Debug\visual_novel.exe
-
-echo ===============================================
+echo Done
 pause

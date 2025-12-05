@@ -2,19 +2,18 @@
 #include "character.hpp"
 
 int main() {
-    Character a("Alex", "Hero", "Main protagonist");
+    Character a("Alex", "Hero", "Description");
     Character b = a;
     Character c;
     c = a;
 
-    std::cout << a << "\n";
-    std::cout << b << "\n";
-    std::cout << c << "\n";
-
     a.Render();
+    b.Render();
+    c.Render();
 
-    if (a == b)
-        std::cout << "Characters are equal.\n";
+    if (a == b) {
+        std::cout << "Equal\n";
+    }
 
     return 0;
 }

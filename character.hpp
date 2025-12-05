@@ -21,3 +21,4 @@ struct Character : public Renderable {
 
     void Render() const override;
 };
+
