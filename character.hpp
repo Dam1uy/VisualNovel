@@ -1,29 +1,37 @@
 ﻿/**
- * @file Character.hpp
+ * @file character.hpp
  * @project Visual Novel Engine
- * @author Denis
+ * @author Your Name
+ * @date 2025
+ *
+ * @brief Declares the Character structure representing a game character.
  */
 
 #pragma once
 #include <string>
 #include <iostream>
 
+ /**
+  * @brief Represents a character inside the visual novel.
+  */
 struct Character {
     std::string name;
     std::string role;
 
-    Character();
+    /**
+     * @brief Default constructor.
+     */
+    Character() = default;
+
+    /**
+     * @brief Parameter constructor.
+     * @param n Character name.
+     * @param r Character role.
+     */
     Character(const std::string& n, const std::string& r);
-    Character(const Character& other);
-    Character& operator=(const Character& other);
 
-    bool operator==(const Character& other) const;
-    bool operator!=(const Character& other) const;
-
-    friend std::ostream& operator<<(std::ostream& os, const Character& c);
-    friend std::istream& operator>>(std::istream& is, Character& c);
-
+    /**
+     * @brief Prints character information to the console.
+     */
     void Print() const;
 };
-
-

@@ -1,41 +1,47 @@
 ﻿/**
- * @file Dialog.hpp
+ * @file Dialog.cpp
  * @project Visual Novel Engine
+ * @author Your Name
+ * @date 2025
+ *
+ * @brief Implements dialog behavior and lookup logic.
  */
 
-#pragma once
-#include <string>
-#include <vector>
-#include <algorithm>
+#include "Dialog.hpp"
 #include <iostream>
-#include "character.hpp"
 
-struct Choice {
-    int id;
-    std::string text;
-    int emotionDelta;
-    int relationshipDelta;
-};
+Dialog::Dialog(int id, const std::string& sp, const std::string& t)
+    : dialogId(id), speaker(sp), text(t) {
+}
 
-struct Dialog {
-    int dialogId;
-    std::string speaker;
-    std::string text;
-    std::vector<Choice> choices;
+bool Dialog::operator==(const Dialog& other) const {
+    return dialogId == other.dialogId && speaker == other.speaker;
+}
 
-    Dialog();
-    Dialog(int id, const std::string& sp, const std::string& t);
-    Dialog(const Dialog& other);
-    Dialog& operator=(const Dialog& other);
+bool Dialog::operator!=(const Dialog& other) const {
+    return !(*this == other);
+}
 
-    bool operator==(const Dialog& other) const;
-    bool operator!=(const Dialog& other) const;
+std::ostream& operator<<(std::ostream& os, const Dialog& d) {
+    os << d.speaker << ": " << d.text;
+    return os;
+}
 
-    friend std::ostream& operator<<(std::ostream& os, const Dialog& d);
-    friend std::istream& operator>>(std::istream& is, Dialog& d);
+std::istream& operator>>(std::istream& is, Dialog& d) {
+    is >> d.dialogId;
+    is.ignore();
+    std::getline(is, d.speaker);
+    std::getline(is, d.text);
+    return is;
+}
 
-    void Render() const;
-    const Choice* FindChoice(int choiceId) const;
-};
+void Dialog::Render() const {
+    std::cout << speaker << ": " << text << "\n";
+}
 
+const Choice* Dialog::FindChoice(int choiceId) const {
+    auto it = std::find_if(choices.begin(), choices.end(),
+        [choiceId](const Choice& c) { return c.id == choiceId; });
 
+    return it != choices.end() ? &(*it) : nullptr;
+}

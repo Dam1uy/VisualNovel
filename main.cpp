@@ -1,16 +1,19 @@
-﻿#include "engine.hpp"
-#include "character.hpp"
-#include <iostream>
+﻿/**
+ * @file main.cpp
+ * @project Visual Novel Engine
+ * @author Your Name
+ * @date 2025
+ *
+ * @brief Entry point for the Visual Novel Engine.
+ */
+
+#include "engine.hpp"
 
 int main() {
-    NovelLib::GameEngine engine;
-    engine.Initialize("TestUser");
-    engine.SaveProgress();
-
-    Character c("Alex", "Protagonist", "Test character");
-    c.Render();
-
-    std::cout << "--- Demonstration complete ---\n";
+    Engine eng;
+    eng.Init("Player1");
+    eng.Update();
     return 0;
 }
+
 

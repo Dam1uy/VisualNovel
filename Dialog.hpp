@@ -1,12 +1,24 @@
+/**
+ * @file Dialog.hpp
+ * @project Visual Novel Engine
+ * @author Your Name
+ * @date 2025
+ *
+ * @brief Declares the Dialog structure and dialog choices.
+ */
+
 #pragma once
 #include <string>
 #include <vector>
 #include <iostream>
-#include <memory>
 #include <algorithm>
+#include <memory>
 #include "character.hpp"
 #include "renderable.hpp"
 
+ /**
+  * @brief Represents a selectable choice in a dialog.
+  */
 struct Choice {
     int id;
     std::string text;
@@ -14,46 +26,63 @@ struct Choice {
     int relationshipDelta;
 };
 
+/**
+ * @brief Represents a dialog spoken by a character.
+ */
 struct Dialog : public Renderable {
     int dialogId;
     std::string speaker;
     std::string text;
     std::vector<Choice> choices;
 
+    /**
+     * @brief Default constructor.
+     */
     Dialog() = default;
-    Dialog(int id, const std::string& sp, const std::string& t)
-        : dialogId(id), speaker(sp), text(t) {
-    }
+
+    /**
+     * @brief Parameter constructor.
+     */
+    Dialog(int id, const std::string& sp, const std::string& t);
+
+    /**
+     * @brief Copy constructor.
+     */
     Dialog(const Dialog& other) = default;
+
+    /**
+     * @brief Assignment operator.
+     */
     Dialog& operator=(const Dialog& other) = default;
 
-    bool operator==(const Dialog& other) const {
-        return dialogId == other.dialogId && speaker == other.speaker;
-    }
-    bool operator!=(const Dialog& other) const { return !(*this == other); }
+    /**
+     * @brief Equality operator.
+     */
+    bool operator==(const Dialog& other) const;
 
-    friend std::ostream& operator<<(std::ostream& os, const Dialog& d) {
-        os << d.speaker << ": " << d.text;
-        return os;
-    }
-    friend std::istream& operator>>(std::istream& is, Dialog& d) {
-        is >> d.dialogId;
-        is.ignore();
-        std::getline(is, d.speaker);
-        std::getline(is, d.text);
-        return is;
-    }
+    /**
+     * @brief Inequality operator.
+     */
+    bool operator!=(const Dialog& other) const;
 
-    void Render() const override { std::cout << *this << std::endl; }
+    /**
+     * @brief Writes dialog to a stream.
+     */
+    friend std::ostream& operator<<(std::ostream& os, const Dialog& d);
 
-    // Important: method used from cpp
-    void ApplyChoice(Character& c, int choiceId);
+    /**
+     * @brief Reads dialog from a stream.
+     */
+    friend std::istream& operator>>(std::istream& is, Dialog& d);
 
-    const Choice* FindChoice(int choiceId) const {
-        auto it = std::find_if(choices.begin(), choices.end(),
-            [choiceId](const Choice& c) { return c.id == choiceId; });
-        return it != choices.end() ? &(*it) : nullptr;
-    }
+    /**
+     * @brief Renders the dialog text.
+     */
+    void Render() const override;
+
+    /**
+     * @brief Finds a choice by its ID.
+     * @return Pointer to the choice or nullptr.
+     */
+    const Choice* FindChoice(int choiceId) const;
 };
-
-

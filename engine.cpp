@@ -1,25 +1,32 @@
-﻿#include "engine.hpp"
-#include <iostream>
-#include <fstream>
+﻿/**
+ * @file engine.cpp
+ * @project Visual Novel Engine
+ * @author Your Name
+ * @date 2025
+ *
+ * @brief Implements the Engine class.
+ */
 
-namespace NovelLib {
+#include "engine.hpp"
 
-    void GameEngine::Initialize(const std::string& name) {
-        playerName = name;
-        std::cout << "Engine initialized for user: " << playerName << "\n";
-    }
+void Engine::Init(const std::string& name) {
+    player = name;
 
-    void GameEngine::SaveProgress() {
-        std::ofstream file("save_demo.txt");
-        if (!file) {
-            std::cout << "Error: cannot open save file.\n";
-            return;
-        }
+    characters.push_back(std::make_shared<Character>("Alex", "Hero"));
+    characters.push_back(std::make_shared<Character>("Mira", "Support"));
 
-        file << "User: " << playerName << "\n";
-        file << "Progress: Demo save\n";
-
-        std::cout << "Progress saved using external library <fstream>.\n";
-    }
-
+    std::sort(characters.begin(), characters.end(),
+        [](auto& a, auto& b) { return a->name < b->name; });
 }
+
+void Engine::Update() {
+    auto it = std::find_if(
+        characters.begin(),
+        characters.end(),
+        [](auto& c) { return c->name == "Alex"; }
+    );
+
+    if (it != characters.end())
+        (*it)->Print();
+}
+
